@@ -56,15 +56,23 @@
 		D85E4BB5274E0D64003FCA08 /* StanfordCS193P.Part_I,II,III */ = {
 			isa = PBXGroup;
 			children = (
-				D85E4BB6274E0D64003FCA08 /* AppDelegate.swift */,
-				D85E4BB8274E0D64003FCA08 /* SceneDelegate.swift */,
 				D85E4BBA274E0D64003FCA08 /* ViewController.swift */,
 				D85E4BBC274E0D64003FCA08 /* Main.storyboard */,
-				D85E4BBF274E0D65003FCA08 /* Assets.xcassets */,
-				D85E4BC1274E0D65003FCA08 /* LaunchScreen.storyboard */,
+				D85E4BCA274E1896003FCA08 /* Suppoting Files */,
 				D85E4BC4274E0D65003FCA08 /* Info.plist */,
 			);
 			path = "StanfordCS193P.Part_I,II,III";
+			sourceTree = "<group>";
+		};
+		D85E4BCA274E1896003FCA08 /* Suppoting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D85E4BB8274E0D64003FCA08 /* SceneDelegate.swift */,
+				D85E4BB6274E0D64003FCA08 /* AppDelegate.swift */,
+				D85E4BBF274E0D65003FCA08 /* Assets.xcassets */,
+				D85E4BC1274E0D65003FCA08 /* LaunchScreen.storyboard */,
+			);
+			path = "Suppoting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
