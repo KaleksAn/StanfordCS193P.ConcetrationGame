@@ -23,7 +23,7 @@ class Concetration {
         cards.shuffle()
     }
     
-    func chooseCard(at index: Int) {
+     func chooseCard(at index: Int) {
         flipCount += HitPoints.oneHit
         if !cards[index].isMatched {
             
@@ -52,7 +52,7 @@ class Concetration {
         }
     }
     
-    func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
+    private func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
         if seenCards.contains(index) { score -= HitPoints.oneHit }
         if seenCards.contains(matchIndex) { score -= HitPoints.oneHit }
     }

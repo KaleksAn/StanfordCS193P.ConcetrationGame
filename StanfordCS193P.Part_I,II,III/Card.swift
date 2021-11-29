@@ -13,20 +13,15 @@ struct Card {
     var isMatched = false
     var identifier: Int
     
-    static var identifierfactory = 0
+    private static var identifierfactory = 0
     
-    static func getUniqueIdentifier() -> Int {
+    private static func getUniqueIdentifier() -> Int {
         identifierfactory += 1
         return identifierfactory
     }
     
     init() {
         self.identifier = Card.getUniqueIdentifier()
-    }
-    
-    mutating func defaultProperty() {
-        isMatched = false
-        isFaceUp = false
     }
     
 }
