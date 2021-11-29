@@ -34,8 +34,7 @@ class Concetration {
                     cards[index].isMatched = true
                 } else {
                     checkSeenCards(forIndex: index, andMatch: matchIndex)
-                    seenCards.insert(index)
-                    seenCards.insert(matchIndex)
+                    addSeenCards(forIndex: index, andMatch: matchIndex)
                 }
                 
                 cards[index].isFaceUp = true
@@ -55,6 +54,11 @@ class Concetration {
     private func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
         if seenCards.contains(index) { score -= HitPoints.oneHit }
         if seenCards.contains(matchIndex) { score -= HitPoints.oneHit }
+    }
+    
+    private func addSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
+        seenCards.insert(index)
+        seenCards.insert(matchIndex)
     }
     
 }
