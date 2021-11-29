@@ -8,7 +8,7 @@
 import Foundation
 
 class Concetration {
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     private var indexOfOneAndOnlyFaceUpCard: Int?
     
     init(numberOfPairsCards: Int) {
@@ -39,6 +39,14 @@ class Concetration {
             }
             
         }
+    }
+    
+    func reset() {
+        for index in cards.indices {
+            cards[index].isMatched = false
+            cards[index].isFaceUp = false
+        }
+        indexOfOneAndOnlyFaceUpCard = nil
     }
     
     

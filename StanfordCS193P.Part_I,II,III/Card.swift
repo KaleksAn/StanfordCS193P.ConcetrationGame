@@ -24,4 +24,9 @@ struct Card {
         self.identifier = Card.getUniqueIdentifier()
     }
     
+    mutating func defaultProperty() {
+        isMatched = false
+        isFaceUp = false
+    }
+    
 }
