@@ -24,12 +24,12 @@ class Concetration {
     }
     
     func chooseCard(at index: Int) {
-        flipCount += 1
+        flipCount += HitPoints.oneHit
         if !cards[index].isMatched {
             
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 if cards[matchIndex].identifier == cards[index].identifier {
-                    score += 2
+                    score += HitPoints.twoHit
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 } else {
@@ -53,8 +53,13 @@ class Concetration {
     }
     
     func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
-        if seenCards.contains(index) { score -= 1 }
-        if seenCards.contains(matchIndex) { score -= 1 }
+        if seenCards.contains(index) { score -= HitPoints.oneHit }
+        if seenCards.contains(matchIndex) { score -= HitPoints.oneHit }
     }
     
+}
+
+fileprivate struct HitPoints {
+    static let oneHit = 1
+    static let twoHit = 2
 }
