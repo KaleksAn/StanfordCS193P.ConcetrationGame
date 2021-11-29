@@ -10,6 +10,7 @@ import Foundation
 class Concetration {
     private(set) var cards = [Card]()
     private var indexOfOneAndOnlyFaceUpCard: Int?
+    private(set) var flipCount = 0
     
     init(numberOfPairsCards: Int) {
         for _ in 1...numberOfPairsCards {
@@ -21,6 +22,7 @@ class Concetration {
     }
     
     func chooseCard(at index: Int) {
+        flipCount += 1
         if !cards[index].isMatched {
             
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
