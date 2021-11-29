@@ -41,13 +41,5 @@ class Concetration {
         }
     }
     
-    func reset() {
-        for index in cards.indices {
-            cards[index].isMatched = false
-            cards[index].isFaceUp = false
-        }
-        indexOfOneAndOnlyFaceUpCard = nil
-    }
-    
     
 }
