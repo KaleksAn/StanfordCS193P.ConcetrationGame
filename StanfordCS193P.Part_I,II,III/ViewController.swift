@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet weak var newGameLabel: UIButton!
     @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var emojiChoices: [String]!
     var emoji: [Int: String]!
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
     
     func updateViewFromModel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
+        scoreLabel.text = "Score: \(game.score)"
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -109,6 +111,7 @@ class ViewController: UIViewController {
         colorForCard = themeViewColor
         newGameLabel.setTitleColor(themeViewColor, for: .normal)
         flipCountLabel.textColor = colors.generalColor
+        scoreLabel.textColor = colors.generalColor
         view.backgroundColor = backViewColor
     }
     

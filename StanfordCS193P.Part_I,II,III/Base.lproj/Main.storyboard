@@ -243,6 +243,14 @@
                                 <color key="textColor" systemColor="systemGreenColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ru5-pX-Sk1">
+                                <rect key="frame" x="104" y="610" width="183" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="74d-J1-0Rc"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -250,6 +258,7 @@
                     <connections>
                         <outlet property="flipCountLabel" destination="dHI-Wi-UYV" id="V2T-jT-pzc"/>
                         <outlet property="newGameLabel" destination="XLs-md-316" id="8Ad-j9-EaY"/>
+                        <outlet property="scoreLabel" destination="ru5-pX-Sk1" id="7Wk-Ag-9Sa"/>
                         <outletCollection property="cardButtons" destination="dmO-hC-FXY" collectionClass="NSMutableArray" id="CcX-0E-2mo"/>
                         <outletCollection property="cardButtons" destination="3tx-un-KvR" collectionClass="NSMutableArray" id="X0W-AH-ygr"/>
                         <outletCollection property="cardButtons" destination="Z18-e9-WlH" collectionClass="NSMutableArray" id="cxk-YV-ojY"/>
