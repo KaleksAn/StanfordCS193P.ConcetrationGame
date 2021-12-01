@@ -61,7 +61,7 @@ class ViewController: UIViewController {
        
     }
     
-    func updateViewFromModel() {
+    private func updateViewFromModel() {
         flipCountLabel.text = "Flips: \(game.flipCount)"
         scoreLabel.text = "Score: \(game.score)"
         for index in cardButtons.indices {
@@ -78,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     
-    func emoji(for card: Card) -> String {
+   private  func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
@@ -87,13 +87,13 @@ class ViewController: UIViewController {
     }
     
     
-    func colorFactory() -> (UIColor, UIColor) {
+    private func colorFactory() -> (UIColor, UIColor) {
         let backgroundColorsCollection = UIColor(displayP3Red: .random(in: 0.0...0.2), green: .random(in: 0.0...0.2), blue: .random(in: 0.0...0.3), alpha: 1.0)
         let generalColorsCollection =  UIColor(hue: .random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         return (backgroundColorsCollection, generalColorsCollection)
     }
     
-    func setColor(forBackground backViewColor: UIColor, andCard cardColor: UIColor) {
+    private func setColor(forBackground backViewColor: UIColor, andCard cardColor: UIColor) {
         cardButtons.forEach { button in button.backgroundColor = cardColor }
         colorForCard = cardColor
         newGameLabel.setTitleColor(cardColor, for: .normal)
@@ -102,13 +102,20 @@ class ViewController: UIViewController {
         view.backgroundColor = backViewColor
     }
     
-    func setLabel() {
+    private func setLabel() {
         newGameLabel.setTitle("New GAME", for: .normal)
         newGameLabel.titleLabel?.font = .systemFont(ofSize: 40.0, weight: .medium)
     }
     
-    func setEmoji() {
+    private func setEmoji() {
         emoji = [:]
+        var index : Int {
+            get {
+                let count = UInt32(collection.count)
+                let randomNumber = arc4random_uniform(count)
+                return Int(randomNumber)
+            }
+        }
         
         let collection = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
                           ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
@@ -117,18 +124,11 @@ class ViewController: UIViewController {
                           ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
                           ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
         
-        var index : Int {
-            get {
-                let count = UInt32(collection.count)
-                let randomNumber = arc4random_uniform(count)
-                return Int(randomNumber)
-            }
-        }
-            emojiChoices = collection[index]
         
+        emojiChoices = collection[index]
     }
     
-    func cornerRadius() {
+    private func cornerRadius() {
         for view in cardButtons {
             view.layer.cornerRadius = 11.0
         }
