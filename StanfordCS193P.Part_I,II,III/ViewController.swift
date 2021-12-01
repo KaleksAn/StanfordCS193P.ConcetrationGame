@@ -12,7 +12,7 @@ class ViewController: UIViewController {
         return .portrait
     }
     
-    var game: Concetration!
+    lazy var game = Concetration(numberOfPairsCards: (cardButtons.count + 1) / 2)
     var colors: ( backgroundColor: UIColor, generalColor: UIColor)!
     
     @IBOutlet weak var flipCountLabel: UILabel!
@@ -29,9 +29,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         colors = colorFactory()
-        game = Concetration(numberOfPairsCards: (cardButtons.count + 1) / 2)
         setEmoji(with: emojiFactory())
-        setColor(forBackground: colors.backgroundColor, andTheme: colors.generalColor)
+        setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
         setLabel()
     }
     
@@ -42,8 +41,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func touchNewGame(_ sender: UIButton) {
-        viewDidLoad()
+        game.resetGame()
         updateViewFromModel()
+        
+        colors = colorFactory() // Метод создаёт два случайных цвета
+        setEmoji(with: emojiFactory()) //Выбор и установка случайного набора эмоджи
+        setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor) // Установка цвета
+        setLabel()
     }
     
     
@@ -106,10 +110,10 @@ class ViewController: UIViewController {
         return (backgroundColorsCollection, generalColorsCollection)
     }
     
-    func setColor(forBackground backViewColor: UIColor, andTheme themeViewColor: UIColor) {
-        cardButtons.forEach { button in button.backgroundColor = themeViewColor }
-        colorForCard = themeViewColor
-        newGameLabel.setTitleColor(themeViewColor, for: .normal)
+    func setColor(forBackground backViewColor: UIColor, andCard cardColor: UIColor) {
+        cardButtons.forEach { button in button.backgroundColor = cardColor }
+        colorForCard = cardColor
+        newGameLabel.setTitleColor(cardColor, for: .normal)
         flipCountLabel.textColor = colors.generalColor
         scoreLabel.textColor = colors.generalColor
         view.backgroundColor = backViewColor

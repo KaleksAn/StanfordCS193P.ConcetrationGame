@@ -61,6 +61,20 @@ class Concetration {
         seenCards.insert(matchIndex)
     }
     
+    func resetGame() {
+        
+        for index in cards.indices {
+            cards[index].isFaceUp = false
+            cards[index].isMatched = false
+        }
+        
+        flipCount = 0
+        score = 0
+        seenCards.removeAll()
+        indexOfOneAndOnlyFaceUpCard = nil
+    }
+    
+    
 }
 
 fileprivate struct HitPoints {
