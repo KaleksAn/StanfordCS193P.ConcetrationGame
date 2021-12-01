@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         colors = colorFactory()
-        setEmoji(with: emojiFactory())
+        setEmoji()
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
         setLabel()
     }
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
         
         colors = colorFactory() // Метод создаёт два случайных цвета
-        setEmoji(with: emojiFactory()) //Выбор и установка случайного набора эмоджи
+        setEmoji() //Выбор и установка случайного набора эмоджи
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor) // Установка цвета
         setLabel()
     }
@@ -86,23 +86,6 @@ class ViewController: UIViewController {
         return emoji[card.identifier] ?? "?"
     }
     
-    func emojiFactory() -> [String] {
-        let collection = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
-                          ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
-                          ["🇯🇵", "🇺🇿", "🇺🇸", "🇰🇷", "🇰🇿", "🇩🇪", "🇷🇺", "🇨🇦", "🇬🇧"],
-                          ["🍏", "🍎", "🍌", "🍋", "🫐", "🍉", "🍓", "🥝", "🍒"],
-                          ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
-                          ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
-        
-        var index : Int {
-            get {
-                let count = UInt32(collection.count)
-                let randomNumber = arc4random_uniform(count)
-                return Int(randomNumber)
-            }
-        }
-        return collection[index]
-    }
     
     func colorFactory() -> (UIColor, UIColor) {
         let backgroundColorsCollection = UIColor(displayP3Red: .random(in: 0.0...0.2), green: .random(in: 0.0...0.2), blue: .random(in: 0.0...0.3), alpha: 1.0)
@@ -124,9 +107,25 @@ class ViewController: UIViewController {
         newGameLabel.titleLabel?.font = .systemFont(ofSize: 40.0, weight: .medium)
     }
     
-    func setEmoji(with collection: [String]) {
+    func setEmoji() {
         emoji = [:]
-        emojiChoices = collection
+        
+        let collection = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
+                          ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
+                          ["🇯🇵", "🇺🇿", "🇺🇸", "🇰🇷", "🇰🇿", "🇩🇪", "🇷🇺", "🇨🇦", "🇬🇧"],
+                          ["🍏", "🍎", "🍌", "🍋", "🫐", "🍉", "🍓", "🥝", "🍒"],
+                          ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
+                          ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
+        
+        var index : Int {
+            get {
+                let count = UInt32(collection.count)
+                let randomNumber = arc4random_uniform(count)
+                return Int(randomNumber)
+            }
+        }
+            emojiChoices = collection[index]
+        
     }
     
     func cornerRadius() {
