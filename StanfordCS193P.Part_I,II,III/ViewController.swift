@@ -23,16 +23,16 @@ class ViewController: UIViewController {
     var emojiChoices: [String]!
     var emoji: [Int: String]!
     var colorForCard: UIColor!
-    var colors : ( backgroundColor: UIColor, generalColor: UIColor)!
+    lazy var colors : ( backgroundColor: UIColor, generalColor: UIColor) = colorFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        colors = colorFactory()
+        //colors = colorFactory()
         game = Concetration(numberOfPairsCards: (cardButtons.count + 1) / 2)
         setEmoji(with: emojiFactory())
-        setLabel()
         setColor(forBackground: colors.backgroundColor, andTheme: colors.generalColor)
+        setLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
