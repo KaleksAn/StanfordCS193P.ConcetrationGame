@@ -15,16 +15,16 @@ class ViewController: UIViewController {
     var game: Concetration!
     var pairsCards: Int { (cardButtons.count + 1) / 2 }
     var colors: ( backgroundColor: UIColor, generalColor: UIColor)!
+    var emojiChoices: [String]!
+    var emoji: [Int: String]!
+    var colorForCard: UIColor!
     
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet weak var newGameLabel: UIButton!
     @IBOutlet var cardButtons: [UIButton]!
     @IBOutlet weak var scoreLabel: UILabel!
     
-    var emojiChoices: [String]!
-    var emoji: [Int: String]!
-    var colorForCard: UIColor!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
