@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
+        return .all
     }
     
     var game: Concetration!
@@ -105,7 +105,9 @@ class ViewController: UIViewController {
     
     private func setLabel() {
         newGameLabel.setTitle("New GAME", for: .normal)
-        newGameLabel.titleLabel?.font = .systemFont(ofSize: 40.0, weight: .medium)
+        newGameLabel.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .medium)
+        scoreLabel.font = .systemFont(ofSize: 20.0, weight: .medium)
+        flipCountLabel.font = .systemFont(ofSize: 20.0, weight: .medium)
     }
     
     private func setEmoji() {
