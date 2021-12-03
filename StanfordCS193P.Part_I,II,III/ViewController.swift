@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     }
     
     var game: Concetration!
+    var pairsCards: Int { (cardButtons.count + 1) / 2 }
     var colors: ( backgroundColor: UIColor, generalColor: UIColor)!
     
     @IBOutlet weak var flipCountLabel: UILabel!
@@ -23,12 +24,11 @@ class ViewController: UIViewController {
     var emojiChoices: [String]!
     var emoji: [Int: String]!
     var colorForCard: UIColor!
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        game = Concetration(numberOfPairsCards: (cardButtons.count + 1) / 2)
+        game = Concetration(numberOfPairsCards: pairsCards)
         colors = colorFactory()
         setEmoji()
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)

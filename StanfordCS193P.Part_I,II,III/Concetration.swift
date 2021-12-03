@@ -72,6 +72,7 @@ class Concetration {
         score = 0
         seenCards.removeAll()
         indexOfOneAndOnlyFaceUpCard = nil
+        cards.shuffle()
     }
     
     
