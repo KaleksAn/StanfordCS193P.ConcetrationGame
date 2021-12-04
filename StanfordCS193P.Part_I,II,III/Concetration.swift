@@ -12,7 +12,28 @@ class Concetration {
     private(set) var flipCount = 0
     private(set) var score = 0
     private var seenCards: Set<Int> = []
-    private var indexOfOneAndOnlyFaceUpCard: Int?
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+        
+    }
     
     init(numberOfPairsCards: Int) {
         for _ in 1...numberOfPairsCards {
@@ -36,14 +57,8 @@ class Concetration {
                     checkSeenCards(forIndex: index, andMatch: matchIndex)
                     addSeenCards(forIndex: index, andMatch: matchIndex)
                 }
-                
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             } else {
-                for flipdownIndex in cards.indices {
-                    cards[flipdownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             
             }
@@ -71,7 +86,6 @@ class Concetration {
         flipCount = 0
         score = 0
         seenCards.removeAll()
-        indexOfOneAndOnlyFaceUpCard = nil
         cards.shuffle()
     }
     
