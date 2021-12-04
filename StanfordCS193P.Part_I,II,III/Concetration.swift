@@ -32,7 +32,6 @@ class Concetration {
                 cards[index].isFaceUp = (index == newValue)
             }
         }
-        
     }
     
     init(numberOfPairsCards: Int) {
@@ -46,24 +45,22 @@ class Concetration {
     
      func chooseCard(at index: Int) {
         flipCount += HitPoints.oneHit
-        if !cards[index].isMatched {
-            
-            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                if cards[matchIndex].identifier == cards[index].identifier {
-                    score += HitPoints.twoHit
-                    cards[matchIndex].isMatched = true
-                    cards[index].isMatched = true
-                } else {
-                    checkSeenCards(forIndex: index, andMatch: matchIndex)
-                    addSeenCards(forIndex: index, andMatch: matchIndex)
-                }
-                cards[index].isFaceUp = true
-            } else {
-                indexOfOneAndOnlyFaceUpCard = index
-            
-            }
-            
-        }
+         
+         if !cards[index].isMatched {
+             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
+                 if cards[matchIndex].identifier == cards[index].identifier {
+                     score += HitPoints.twoHit
+                     cards[matchIndex].isMatched = true
+                     cards[index].isMatched = true
+                 } else {
+                     checkSeenCards(forIndex: index, andMatch: matchIndex)
+                     addSeenCards(forIndex: index, andMatch: matchIndex)
+                 }
+                 cards[index].isFaceUp = true
+             } else {
+                 indexOfOneAndOnlyFaceUpCard = index
+             }
+         }
     }
     
     private func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
