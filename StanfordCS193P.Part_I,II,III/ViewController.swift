@@ -12,23 +12,23 @@ class ViewController: UIViewController {
         return .all
     }
     
-    var game: Concetration!
-    var pairsCards: Int { return (cardButtons.count + 1) / 2 }
+    private var game: Concetration!
+    var numberOfPairsCards: Int { return (cardButtons.count + 1) / 2 }
     var colors: ( backgroundColor: UIColor, generalColor: UIColor)!
     var emojiChoices: [String]!
     var emoji: [Int: String]!
     var colorForCard: UIColor!
     
-    @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet weak var newGameLabel: UIButton!
-    @IBOutlet var cardButtons: [UIButton]!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var newGameLabel: UIButton!
+    @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        game = Concetration(numberOfPairsCards: pairsCards)
+        game = Concetration(numberOfPairsCards: numberOfPairsCards)
         colors = colorFactory()
         setEmoji()
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func touchNewGame(_ sender: UIButton) {
+    @IBAction private func touchNewGame(_ sender: UIButton) {
         game.resetGame()
         updateViewFromModel()
         
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func touchCard(_ sender: UIButton) {
+    @IBAction private func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()

@@ -38,7 +38,6 @@ class Concetration {
         for _ in 1...numberOfPairsCards {
             let card = Card()
             cards += [card, card]
-            
         }
         cards.shuffle()
     }
