@@ -44,6 +44,7 @@ class Concetration {
     
      func chooseCard(at index: Int) {
         flipCount += HitPoints.oneHit
+         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): choosen index not in the cards")
          
          if !cards[index].isMatched {
              if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
