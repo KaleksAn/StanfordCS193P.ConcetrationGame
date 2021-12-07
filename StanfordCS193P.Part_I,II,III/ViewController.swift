@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
    private  func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int.random(in: 1...emojiChoices.count)
+            let randomIndex = Int.random(in: 0..<emojiChoices.count)
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
