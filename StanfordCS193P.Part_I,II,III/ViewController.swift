@@ -112,14 +112,6 @@ class ViewController: UIViewController {
     
     private func setEmoji() {
         emoji = [:]
-        var index : Int {
-            get {
-                let count = UInt32(collection.count)
-                let randomNumber = arc4random_uniform(count)
-                return Int(randomNumber)
-            }
-        }
-        
         let collection = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
                           ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
                           ["🇯🇵", "🇺🇿", "🇺🇸", "🇰🇷", "🇰🇿", "🇩🇪", "🇷🇺", "🇨🇦", "🇬🇧"],
@@ -127,7 +119,7 @@ class ViewController: UIViewController {
                           ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
                           ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
         
-        
+        let index = Int.random(in: 0..<collection.count)
         emojiChoices = collection[index]
     }
     
