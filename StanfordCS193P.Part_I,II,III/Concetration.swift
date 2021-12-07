@@ -35,6 +35,7 @@ class Concetration {
     }
     
     init(numberOfPairsCards: Int) {
+        assert(numberOfPairsCards > 0, "Concentration.init(\(numberOfPairsCards)): you must have at least one pair of card")
         for _ in 1...numberOfPairsCards {
             let card = Card()
             cards += [card, card]
