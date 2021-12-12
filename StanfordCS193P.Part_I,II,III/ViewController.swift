@@ -20,15 +20,20 @@ class ViewController: UIViewController {
     @IBOutlet private weak var newGameLabel: UIButton!
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private weak var scoreLabel: UILabel!
+    let collectionEmoji = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
+                      ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
+                      ["🇯🇵", "🇺🇿", "🇺🇸", "🇰🇷", "🇰🇿", "🇩🇪", "🇷🇺", "🇨🇦", "🇬🇧"],
+                      ["🍏", "🍎", "🍌", "🍋", "🫐", "🍉", "🍓", "🥝", "🍒"],
+                      ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
+                      ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         colors = colorFactory()
-        setEmoji()
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
-        //setLabel()
+        indexEmoji = Int.random(in: 0..<collectionEmoji.count)
     }
     
     @IBAction private func touchNewGame(_ sender: UIButton) {
@@ -36,9 +41,8 @@ class ViewController: UIViewController {
         updateViewFromModel()
         
         colors = colorFactory() // Метод создаёт два случайных цвета
-        setEmoji() //Выбор и установка случайного набора эмоджи
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor) // Установка цвета
-        //setLabel()
+        indexEmoji = Int.random(in: 0..<collectionEmoji.count)
     }
     
     
@@ -93,18 +97,11 @@ class ViewController: UIViewController {
         view.backgroundColor = backViewColor
     }
     
-    
-    private func setEmoji() {
-        emoji = [:]
-        let collection = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
-                          ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
-                          ["🇯🇵", "🇺🇿", "🇺🇸", "🇰🇷", "🇰🇿", "🇩🇪", "🇷🇺", "🇨🇦", "🇬🇧"],
-                          ["🍏", "🍎", "🍌", "🍋", "🫐", "🍉", "🍓", "🥝", "🍒"],
-                          ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
-                          ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
-        
-        let index = Int.random(in: 0..<collection.count)
-        emojiChoices = collection[index]
+    private var indexEmoji = 0 {
+        didSet {
+            emoji = [:]
+            emojiChoices = collectionEmoji[indexEmoji]
+        }
     }
     
 }
