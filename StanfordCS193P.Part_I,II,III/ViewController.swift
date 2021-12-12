@@ -93,12 +93,6 @@ class ViewController: UIViewController {
         view.backgroundColor = backViewColor
     }
     
-    private func setLabel() {
-        newGameLabel.setTitle("New GAME", for: .normal)
-        newGameLabel.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .bold)
-        scoreLabel.font = .systemFont(ofSize: 20.0, weight: .bold)
-        flipCountLabel.font = .systemFont(ofSize: 20.0, weight: .bold)
-    }
     
     private func setEmoji() {
         emoji = [:]
