@@ -8,9 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .all
-    }
     
     private var game: Concetration!
     var numberOfPairsCards: Int { return (cardButtons.count + 1) / 2 }
@@ -32,7 +29,7 @@ class ViewController: UIViewController {
         colors = colorFactory()
         setEmoji()
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
-        setLabel()
+        //setLabel()
     }
     
     @IBAction private func touchNewGame(_ sender: UIButton) {
@@ -42,7 +39,7 @@ class ViewController: UIViewController {
         colors = colorFactory() // Метод создаёт два случайных цвета
         setEmoji() //Выбор и установка случайного набора эмоджи
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor) // Установка цвета
-        setLabel()
+        //setLabel()
     }
     
     
