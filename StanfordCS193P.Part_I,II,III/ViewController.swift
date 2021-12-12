@@ -35,12 +35,6 @@ class ViewController: UIViewController {
         setLabel()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cornerRadius()
-    }
-    
-    
     @IBAction private func touchNewGame(_ sender: UIButton) {
         game.resetGame()
         updateViewFromModel()
@@ -122,13 +116,6 @@ class ViewController: UIViewController {
         let index = Int.random(in: 0..<collection.count)
         emojiChoices = collection[index]
     }
-    
-    private func cornerRadius() {
-        for view in cardButtons {
-            view.layer.cornerRadius = 11.0
-        }
-    }
-    
     
 }
 
