@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private var game: Concetration!
+    private lazy var game = Concetration(numberOfPairsCards: numberOfPairsCards)
     var numberOfPairsCards: Int { return (cardButtons.count + 1) / 2 }
     var colors: ( backgroundColor: UIColor, generalColor: UIColor)!
     var emojiChoices: [String]!
@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        game = Concetration(numberOfPairsCards: numberOfPairsCards)
         colors = colorFactory()
         setEmoji()
         setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
