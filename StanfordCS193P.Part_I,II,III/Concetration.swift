@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Concetration {
+struct Concetration {
     private(set) var cards = [Card]()
     private(set) var flipCount = 0
     private(set) var score = 0
@@ -43,7 +43,7 @@ class Concetration {
         cards.shuffle()
     }
     
-     func chooseCard(at index: Int) {
+     mutating func chooseCard(at index: Int) {
         flipCount += HitPoints.oneHit
          assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): choosen index not in the cards")
          
@@ -64,17 +64,17 @@ class Concetration {
          }
     }
     
-    private func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
+    private mutating func checkSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
         if seenCards.contains(index) { score -= HitPoints.oneHit }
         if seenCards.contains(matchIndex) { score -= HitPoints.oneHit }
     }
     
-    private func addSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
+    private mutating func addSeenCards(forIndex index: Int, andMatch matchIndex: Int) {
         seenCards.insert(index)
         seenCards.insert(matchIndex)
     }
     
-    func resetGame() {
+    mutating func resetGame() {
         
         for index in cards.indices {
             cards[index].isFaceUp = false

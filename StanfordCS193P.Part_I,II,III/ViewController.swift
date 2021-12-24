@@ -10,16 +10,16 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var game = Concetration(numberOfPairsCards: numberOfPairsCards)
-    var numberOfPairsCards: Int { return (cardButtons.count + 1) / 2 }
-    var colors: ( backgroundColor: UIColor, generalColor: UIColor)!
-    var emojiChoices: [String]!
-    var emoji: [Int: String]!
-    var colorForCard: UIColor!
+    private var numberOfPairsCards: Int { return (cardButtons.count + 1) / 2 }
+    private var emojiChoices = [String]()
+    private var emoji = [Int: String]()
+    private var colorCard = UIColor.systemOrange
     
     @IBOutlet private weak var flipCountLabel: UILabel!
     @IBOutlet private weak var newGameLabel: UIButton!
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private weak var scoreLabel: UILabel!
+    
     let collectionEmoji = [["🎃", "👻", "🦇", "😈", "🍭", "🙀", "😱", "🍎", "🧛‍♂️"],
                       ["🤖", "👽", "👩🏻‍🚀", "☄️", "⭐️", "🛰", "🛸", "🚀", "🔭"],
                       ["🇯🇵", "🇺🇿", "🇺🇸", "🇰🇷", "🇰🇿", "🇩🇪", "🇷🇺", "🇨🇦", "🇬🇧"],
@@ -27,21 +27,15 @@ class ViewController: UIViewController {
                       ["🚗", "🏎", "🚲", "🚄", "🚂", "🚁", "🛳", "🚢", "🏍"],
                       ["⌚️", "💻", "📱", "📷", "🕹", "🎛", "🪛", "💡", "🔋"]]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        colors = colorFactory()
-        setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor)
         indexEmoji = Int.random(in: 0..<collectionEmoji.count)
     }
     
     @IBAction private func touchNewGame(_ sender: UIButton) {
         game.resetGame()
         updateViewFromModel()
-        
-        colors = colorFactory() // Метод создаёт два случайных цвета
-        setColor(forBackground: colors.backgroundColor, andCard: colors.generalColor) // Установка цвета
         indexEmoji = Int.random(in: 0..<collectionEmoji.count)
     }
     
@@ -67,7 +61,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             } else {
                 button.setTitle("", for: .normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 0) : colorForCard
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 0) : colorCard
             }
         }
     }
@@ -82,27 +76,13 @@ class ViewController: UIViewController {
     }
     
     
-    private func colorFactory() -> (UIColor, UIColor) {
-        let backgroundColorsCollection = UIColor(displayP3Red: .random(in: 0.0...0.2), green: .random(in: 0.0...0.2), blue: .random(in: 0.0...0.3), alpha: 1.0)
-        let generalColorsCollection =  UIColor(hue: .random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-        return (backgroundColorsCollection, generalColorsCollection)
-    }
-    
-    private func setColor(forBackground backViewColor: UIColor, andCard cardColor: UIColor) {
-        cardButtons.forEach { button in button.backgroundColor = cardColor }
-        colorForCard = cardColor
-        newGameLabel.setTitleColor(cardColor, for: .normal)
-        flipCountLabel.textColor = colors.generalColor
-        scoreLabel.textColor = colors.generalColor
-        view.backgroundColor = backViewColor
-    }
-    
     private var indexEmoji = 0 {
         didSet {
-            emoji = [:]
+            emoji = [Int: String]()
             emojiChoices = collectionEmoji[indexEmoji]
         }
     }
+    
     
 }
 
