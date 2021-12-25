@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     private lazy var game = Concetration(numberOfPairsCards: numberOfPairsCards)
     private var numberOfPairsCards: Int { return (cardButtons.count + 1) / 2 }
     private var emojiChoices = [String]()
-    private var emoji = [Int: String]()
+    private var emoji = [Card: String]()
     private var colorCard = UIColor.systemOrange
     
     @IBOutlet private weak var flipCountLabel: UILabel!
@@ -68,17 +68,17 @@ class ViewController: UIViewController {
     
     
    private  func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+        if emoji[card] == nil, emojiChoices.count > 0 {
             let randomIndex = Int.random(in: 0..<emojiChoices.count)
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            emoji[card] = emojiChoices.remove(at: randomIndex)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     
     private var indexEmoji = 0 {
         didSet {
-            emoji = [Int: String]()
+            emoji = [Card: String]()
             emojiChoices = collectionEmoji[indexEmoji]
         }
     }
