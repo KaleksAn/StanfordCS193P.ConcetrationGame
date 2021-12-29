@@ -87,10 +87,11 @@ struct Concetration {
         cards.shuffle()
     }
     
+    private struct HitPoints {
+        static let oneHit = 1
+        static let twoHit = 2
+    }
+
     
 }
 
-fileprivate struct HitPoints {
-    static let oneHit = 1
-    static let twoHit = 2
-}
