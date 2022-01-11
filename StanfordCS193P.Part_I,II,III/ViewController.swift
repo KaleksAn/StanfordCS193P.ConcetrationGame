@@ -15,7 +15,11 @@ class ViewController: UIViewController {
     private var emoji = [Card: String]()
     private var colorCard = UIColor.systemOrange
     
-    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private weak var flipCountLabel: UILabel! {
+        didSet {
+            updateViewFromModel()
+        }
+    }
     @IBOutlet private weak var newGameLabel: UIButton!
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private weak var scoreLabel: UILabel!
@@ -83,6 +87,17 @@ class ViewController: UIViewController {
         }
     }
     
+    private(set) var flipCount = 0 {
+        didSet {
+            updateFlipCountLabel()
+        }
+    }
     
+    private func updateFlipCountLabel() {
+        let attributes: [NSAttributedString.Key : Any] = [.strokeWidth: 5.0, .strokeColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)]
+        let attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
+        flipCountLabel.attributedText = attributedString
+        
+    }
 }
 

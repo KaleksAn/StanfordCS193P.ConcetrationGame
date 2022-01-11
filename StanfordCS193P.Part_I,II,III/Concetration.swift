@@ -14,6 +14,9 @@ struct Concetration {
     private var seenCards: Set<Int> = []
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
+            return cards.indices.filter{ cards[$0].isFaceUp }.oneAndOnly
+            //return faceUpCardIndices.count == 1 ? faceUpCardIndices.first : nil
+            /*
             var foundIndex: Int?
             for index in cards.indices {
                 if cards[index].isFaceUp {
@@ -25,6 +28,7 @@ struct Concetration {
                 }
             }
             return foundIndex
+             */
         }
         
         set {
@@ -95,3 +99,8 @@ struct Concetration {
     
 }
 
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
+    }
+}
